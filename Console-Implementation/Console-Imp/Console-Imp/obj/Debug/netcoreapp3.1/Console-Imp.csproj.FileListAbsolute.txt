@@ -9,3 +9,14 @@ C:\Users\computing\Documents\Dump\Console Implementation\Console-Imp\Console-Imp
 C:\Users\computing\Documents\Dump\Console Implementation\Console-Imp\Console-Imp\obj\Debug\netcoreapp3.1\Console-Imp.AssemblyInfo.cs
 C:\Users\computing\Documents\Dump\Console Implementation\Console-Imp\Console-Imp\obj\Debug\netcoreapp3.1\Console-Imp.dll
 C:\Users\computing\Documents\Dump\Console Implementation\Console-Imp\Console-Imp\obj\Debug\netcoreapp3.1\Console-Imp.pdb
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\bin\Debug\netcoreapp3.1\Console-Imp.exe
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\bin\Debug\netcoreapp3.1\Console-Imp.deps.json
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\bin\Debug\netcoreapp3.1\Console-Imp.runtimeconfig.json
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\bin\Debug\netcoreapp3.1\Console-Imp.runtimeconfig.dev.json
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\bin\Debug\netcoreapp3.1\Console-Imp.dll
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\bin\Debug\netcoreapp3.1\Console-Imp.pdb
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\obj\Debug\netcoreapp3.1\Console-Imp.csprojAssemblyReference.cache
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\obj\Debug\netcoreapp3.1\Console-Imp.AssemblyInfoInputs.cache
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\obj\Debug\netcoreapp3.1\Console-Imp.AssemblyInfo.cs
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\obj\Debug\netcoreapp3.1\Console-Imp.dll
+C:\Users\Harry\source\repos\WpfApp1\Console-Implementation\Console-Imp\Console-Imp\obj\Debug\netcoreapp3.1\Console-Imp.pdb

@@ -5,8 +5,9 @@ using System.Text;
 namespace Console_Imp
 {
     //this will hold all the infomation for the countries and will hold the functions specific to the countries
-    class Country
+    public class Country
     {
-
+        public int Population;
+        public string Name;
     }
 }
