@@ -24,7 +24,19 @@ namespace Console_Imp
             }
             foreach(Country info in CountryInfo)
             {
-                Console.WriteLine(info.Name + ":" + info.Population);
+                Console.WriteLine("Vote");
+                int Vote = Convert.ToInt32(Console.ReadLine());
+
+                if(info.ChangeVote(Vote) == true)
+                {
+                    Console.WriteLine("Vote Changed");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Vote");
+                }
+
+                Console.WriteLine(info.Name + ":" + info.Population + ":" + info.GetVote());
             }
         }
     }
