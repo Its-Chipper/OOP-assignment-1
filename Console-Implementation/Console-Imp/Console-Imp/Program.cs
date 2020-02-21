@@ -221,6 +221,20 @@ namespace Console_Imp
                     Console.WriteLine(info.Name + ":" + info.GetVoteString());
                 }
             }
+        
+            void AllCountriesParticipating()
+            {
+          
+                foreach (Country info in CountryInfo)
+                {
+                    if (info.GetVote() == 3)
+                    {
+                        info.ChangeVote(1);
+                    }
+                }
+            }
+        
+        
         }
     }
 }

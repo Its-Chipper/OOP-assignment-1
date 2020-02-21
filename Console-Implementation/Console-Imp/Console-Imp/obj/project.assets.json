@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Harry\\.nuget\\packages\\": {}
+    "C:\\Users\\Bernard\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Harry\\source\\repos\\WpfApp1\\Console-Implementation\\Console-Imp\\Console-Imp\\Console-Imp.csproj",
+      "projectUniqueName": "F:\\University Of Lincoln\\1st Year\\Object Oriented Programming\\Assignment 1\\Console-Implementation\\Console-Imp\\Console-Imp\\Console-Imp.csproj",
       "projectName": "Console-Imp",
-      "projectPath": "C:\\Users\\Harry\\source\\repos\\WpfApp1\\Console-Implementation\\Console-Imp\\Console-Imp\\Console-Imp.csproj",
-      "packagesPath": "C:\\Users\\Harry\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Harry\\source\\repos\\WpfApp1\\Console-Implementation\\Console-Imp\\Console-Imp\\obj\\",
+      "projectPath": "F:\\University Of Lincoln\\1st Year\\Object Oriented Programming\\Assignment 1\\Console-Implementation\\Console-Imp\\Console-Imp\\Console-Imp.csproj",
+      "packagesPath": "C:\\Users\\Bernard\\.nuget\\packages\\",
+      "outputPath": "F:\\University Of Lincoln\\1st Year\\Object Oriented Programming\\Assignment 1\\Console-Implementation\\Console-Imp\\Console-Imp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Harry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Bernard\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
