@@ -8,6 +8,7 @@ namespace Console_Imp
     class Functions
     {
         private int CurrentRule = 1;
+        Program P = new Program();
 
         private bool Majority(float percentOfVote, float percentOfPop, float percentNeed, float popNeeded)
         {
@@ -30,6 +31,7 @@ namespace Console_Imp
         }
         public bool QualifiedMajority(float percentOfVote, float percentOfPop)
         {
+            
             return Majority(percentOfVote, percentOfPop, (float)0.55, (float)0.65);
         }
 
