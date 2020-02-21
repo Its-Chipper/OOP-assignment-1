@@ -225,9 +225,10 @@ namespace Console_Imp
             void AllCountriesParticipating()
             {
           
-                foreach (Country info in CountryInfo)
+                foreach (Country info in CountryInfo) //loops through each country as info 
                 {
-                    if (info.GetVote() == 3)
+                    //If the country vote is set to NoVote(3). It will be set to Against(1) 
+                    if (info.GetVote() == 3) 
                     {
                         info.ChangeVote(1);
                     }
