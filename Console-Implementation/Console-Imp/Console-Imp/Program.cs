@@ -148,9 +148,10 @@ namespace Console_Imp
 
             void ChangeSingleVote()
             {
+                Console.WriteLine("\nNum".PadRight(6) + "Country".PadRight(15) + "Vote");
                 for(int i = 0; i < CountryInfo.Length; i++)
                 {
-                    Console.WriteLine((i+1) + ":" + CountryInfo[i].Name + ":" + CountryInfo[i].GetVoteString());
+                    Console.WriteLine((i+1).ToString().PadRight(5) + CountryInfo[i].Name.PadRight(15) + CountryInfo[i].GetVoteString().PadRight(7));
                 }
 
                 int Value = 0;
