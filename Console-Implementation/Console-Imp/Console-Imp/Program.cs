@@ -8,14 +8,16 @@ namespace Console_Imp
         static Functions FunctionsCall = new Functions();
         static void Main(string[] args)
         {
+            //array of the countries
             Country[] CountryInfo = new Country[27];
 
-
+            //getting the infomation about the countries from the text file
             string Path = Directory.GetCurrentDirectory();
             string Text = File.ReadAllText(Path.Substring(0, Path.Length - 23) + "CountriesInfo.txt");
 
             string[] CountriesText = Text.Split('\n');
 
+            //putting the infomation from the file into the array
             for(int i = 0; i < CountriesText.Length; i++)
             {
                 string[] infoarray = CountriesText[i].Split(' ');
@@ -24,7 +26,7 @@ namespace Console_Imp
                 CountryInfo[i].Population = Convert.ToInt32(infoarray[1]);
             }
 
-
+            //loop for the main menu
             while (true)
             {
                 Console.WriteLine(DisplayMenu());
@@ -39,17 +41,19 @@ namespace Console_Imp
                 }
             }
 
+            //Method for displaying current state of the votes to the user
             string DisplayVotes()
             {
                 string Output = "\n";
-                Output += "Country".PadRight(15) + "Population".PadRight(12) + "Vote\n\n";
-                foreach (Country info in CountryInfo)
+                Output += "Country".PadRight(15) + "Population".PadRight(12) + "Vote\n\n";//formating for the output
+                foreach (Country info in CountryInfo)//loops through the array of countries 
                 {
-                    Output += info.Name.PadRight(15) + String.Format("{0:n0}", info.Population).PadRight(12) + info.GetVoteString() + "\n";
+                    Output += info.Name.PadRight(15) + String.Format("{0:n0}", info.Population).PadRight(12) + info.GetVoteString() + "\n";//formating the country output
                 }
                 return Output;
             }
 
+            //Method for diaplaying menu to user
             string DisplayMenu()
             {
                 string Output = "\nMenu\n";
@@ -63,6 +67,7 @@ namespace Console_Imp
                 return Output;
             }
 
+            //takes the users input from the menu
             bool TestMenuInput(int Input)
             {
                 if(Input == 1)
@@ -93,6 +98,7 @@ namespace Console_Imp
                 return false;
             }
 
+            //method for testing the current sate of the votes
             bool TestCurrentVote()
             {
                 int TotalPop = 0;
@@ -104,7 +110,7 @@ namespace Console_Imp
                 int ForVote = 0;
                 int AgainstVote = 0;
                 int AbstainVote = 0;
-                foreach (Country info in CountryInfo)
+                foreach (Country info in CountryInfo)//loop to get the current votes of all the countries and the population for against and abstaining
                 {
                     int Vote = info.Vote;
                     if(Vote != 3)
@@ -128,12 +134,16 @@ namespace Console_Imp
                     }
                 }
 
+                //working out percentages for the votes and the population
                 float VotePercent = (float) ForVote / TotalVote;
                 float PopPercent = (float) ForPop / TotalPop;
 
+                //output to the user
                 Console.WriteLine("Vote:  For:" + ForVote + " Against:" + AgainstVote + " Abstain:" + AbstainVote + " Percent:" + Math.Round(VotePercent * 100, 2));
                 Console.WriteLine("Population:  For:" + String.Format("{0:n0}", ForPop) + " Against:" + String.Format("{0:n0}", AgainstPop) + " Abstain:" + String.Format("{0:n0}", AbstainPop) + " Percent:" + Math.Round(PopPercent * 100, 2));
 
+
+                //test if the vote passed or was rejected
                 if (FunctionsCall.QualifiedMajority(VotePercent, PopPercent))
                 {
                     Console.WriteLine("Approved");
@@ -146,17 +156,20 @@ namespace Console_Imp
                 }
             }
 
+            //methof to change a single vote in the array
             void ChangeSingleVote()
             {
-                Console.WriteLine("\nNum".PadRight(6) + "Country".PadRight(15) + "Vote");
+                Console.WriteLine("\nNum".PadRight(6) + "Country".PadRight(15) + "Vote");//formating the output
                 for(int i = 0; i < CountryInfo.Length; i++)
                 {
                     Console.WriteLine((i+1).ToString().PadRight(5) + CountryInfo[i].Name.PadRight(15) + CountryInfo[i].GetVoteString().PadRight(7));
                 }
 
                 int Value = 0;
+                //select value
                 while (true)
                 {
+                    //taking users input
                     Console.WriteLine("\nChoose Contry:");
                     Value = Convert.ToInt32(Console.ReadLine());
                     if(Value < 27)
@@ -169,6 +182,7 @@ namespace Console_Imp
                     }
                 }
 
+                //change vote
                 while (true)
                 {
                     Console.WriteLine("1: For");
@@ -192,6 +206,7 @@ namespace Console_Imp
                 
             }
 
+            //change all votes
             void ChangeAllVotes()
             {
                 foreach (Country info in CountryInfo)
