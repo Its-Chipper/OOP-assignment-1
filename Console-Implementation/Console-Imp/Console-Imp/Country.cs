@@ -4,18 +4,17 @@ using System.Text;
 
 namespace Console_Imp
 {
-    //this will hold all the infomation for the countries and will hold the functions specific to the countries
+    //This will hold all the infomation for the countries and will hold the functions specific to the countries.
     public class Country
     {
         public int Population;
         public string Name;
-        private int Vote_; //store as int as there are 4 diffrent options forn the countries to vote for
+        private int Vote_; //Store as int as there are 4 diffrent options forn the countries to vote for.
         public int Vote { get
             {
                 return Vote_;
             } 
         }
-
         public bool ChangeVote(int NewVote)
         {
             if(NewVote >= 0 && NewVote <= 3){
@@ -27,12 +26,10 @@ namespace Console_Imp
                 return false;
             }
         }
-
         public int GetVote()
         {
             return Vote_;
         }
-
         public string GetVoteString()
         {
             if(Vote_ == 0)
@@ -49,7 +46,7 @@ namespace Console_Imp
             }
             else if(Vote_ == 3)
             {
-                return "No Vote";
+                return "Not Participating";
             }
             else
             {
