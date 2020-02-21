@@ -9,12 +9,17 @@ namespace Console_Imp
     {
         public int Population;
         public string Name;
-        private int Vote; //store as int as there are 4 diffrent options forn the countries to vote for
+        private int Vote_; //store as int as there are 4 diffrent options forn the countries to vote for
+        public int Vote { get
+            {
+                return Vote_;
+            } 
+        }
 
         public bool ChangeVote(int NewVote)
         {
             if(NewVote >= 0 && NewVote <= 3){
-                Vote = NewVote;
+                Vote_ = NewVote;
                 return true;
             }
             else
@@ -25,7 +30,31 @@ namespace Console_Imp
 
         public int GetVote()
         {
-            return Vote;
+            return Vote_;
+        }
+
+        public string GetVoteString()
+        {
+            if(Vote_ == 0)
+            {
+                return "For";
+            }
+            else if(Vote_ == 1)
+            {
+                return "Against";
+            }
+            else if(Vote_ == 2)
+            {
+                return "Abstain";
+            }
+            else if(Vote_ == 3)
+            {
+                return "No Vote";
+            }
+            else
+            {
+                return "Invalid Vote";
+            }
         }
     }
 }
