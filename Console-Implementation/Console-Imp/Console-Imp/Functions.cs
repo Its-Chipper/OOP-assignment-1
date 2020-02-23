@@ -49,6 +49,21 @@ namespace Console_Imp
             {
                 return QualifiedMajority(percentOfVote, percentOfPop);
             }
+            if(CurrentRule == 3)
+            {
+                return Unanimity(percentOfVote, percentOfPop);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool Unanimity(float percentOfVote, float percentOfPop)
+        {
+            if((percentOfVote == 1.0) && (percentOfPop == 1.0))
+            {
+                return true;
+            }
             else
             {
                 return false;
