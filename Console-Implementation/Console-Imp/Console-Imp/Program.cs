@@ -11,10 +11,7 @@ namespace Console_Imp
             //array of the countries
             Country[] CountryInfo = new Country[27];
 
-<<<<<<< HEAD
             //getting the infomation about the countries from the text file
-=======
->>>>>>> origin/New_Functions
             string Path = Directory.GetCurrentDirectory();
             string Text = File.ReadAllText(Path.Substring(0, Path.Length - 23) + "CountriesInfo.txt");
 
@@ -28,12 +25,9 @@ namespace Console_Imp
                 CountryInfo[i].Name = infoarray[0];
                 CountryInfo[i].Population = Convert.ToInt32(infoarray[1]);
             }
-<<<<<<< HEAD
 
             //loop for the main menu
-=======
             //EurozoneVote(); //Test Eurozone method.
->>>>>>> origin/New_Functions
             while (true)
             {
                 Console.WriteLine(DisplayMenu());
@@ -47,11 +41,8 @@ namespace Console_Imp
                     TestInput = TestMenuInput(InputValue);
                 }
             }
-<<<<<<< HEAD
 
             //Method for displaying current state of the votes to the user
-=======
->>>>>>> origin/New_Functions
             string DisplayVotes()
             {
                 string Output = "\n";
@@ -62,11 +53,8 @@ namespace Console_Imp
                 }
                 return Output;
             }
-<<<<<<< HEAD
 
             //Method for diaplaying menu to user
-=======
->>>>>>> origin/New_Functions
             string DisplayMenu()
             {
                 string Output = "\nMenu\n";
@@ -79,11 +67,8 @@ namespace Console_Imp
 
                 return Output;
             }
-<<<<<<< HEAD
 
             //takes the users input from the menu
-=======
->>>>>>> origin/New_Functions
             bool TestMenuInput(int Input)
             {
                 if(Input == 1)
@@ -113,11 +98,8 @@ namespace Console_Imp
                 }
                 return false;
             }
-<<<<<<< HEAD
 
             //method for testing the current sate of the votes
-=======
->>>>>>> origin/New_Functions
             bool TestCurrentVote()
             {
                 int TotalPop = 0;
@@ -151,11 +133,8 @@ namespace Console_Imp
                         }
                     }
                 }
-<<<<<<< HEAD
 
                 //working out percentages for the votes and the population
-=======
->>>>>>> origin/New_Functions
                 float VotePercent = (float) ForVote / TotalVote;
                 float PopPercent = (float) ForPop / TotalPop;
 
@@ -176,11 +155,8 @@ namespace Console_Imp
                     return false;
                 }
             }
-<<<<<<< HEAD
 
-            //methof to change a single vote in the array
-=======
->>>>>>> origin/New_Functions
+            //method to change a single vote in the array
             void ChangeSingleVote()
             {
                 Console.WriteLine("\nNum".PadRight(6) + "Country".PadRight(15) + "Vote");//formating the output
@@ -204,11 +180,8 @@ namespace Console_Imp
                         Console.WriteLine("Invalid Country (Expecting Int)");
                     }
                 }
-<<<<<<< HEAD
 
                 //change vote
-=======
->>>>>>> origin/New_Functions
                 while (true)
                 {
                     Console.WriteLine("1: For");
@@ -231,11 +204,8 @@ namespace Console_Imp
                 }
                 
             }
-<<<<<<< HEAD
 
             //change all votes
-=======
->>>>>>> origin/New_Functions
             void ChangeAllVotes()
             {
                 foreach (Country info in CountryInfo)
@@ -264,7 +234,6 @@ namespace Console_Imp
                     Console.WriteLine(info.Name + ":" + info.GetVoteString());
                 }
             }
-<<<<<<< HEAD
         
             void AllCountriesParticipating()
             {
@@ -279,8 +248,7 @@ namespace Console_Imp
                 }
             }
         
-        
-=======
+       
             void EurozoneVote() //Eurozone method to change all non-eurozone votes to not paricipating.
             {
                 CountryInfo[1].ChangeVote(3); //Bulgaria
@@ -316,7 +284,6 @@ namespace Console_Imp
                     }
                 }
             }
->>>>>>> origin/New_Functions
         }
     }
 }
