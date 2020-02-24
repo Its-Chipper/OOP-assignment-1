@@ -11,7 +11,10 @@ namespace Console_Imp
             //array of the countries
             Country[] CountryInfo = new Country[27];
 
+<<<<<<< HEAD
             //getting the infomation about the countries from the text file
+=======
+>>>>>>> origin/New_Functions
             string Path = Directory.GetCurrentDirectory();
             string Text = File.ReadAllText(Path.Substring(0, Path.Length - 23) + "CountriesInfo.txt");
 
@@ -25,8 +28,12 @@ namespace Console_Imp
                 CountryInfo[i].Name = infoarray[0];
                 CountryInfo[i].Population = Convert.ToInt32(infoarray[1]);
             }
+<<<<<<< HEAD
 
             //loop for the main menu
+=======
+            //EurozoneVote(); //Test Eurozone method.
+>>>>>>> origin/New_Functions
             while (true)
             {
                 Console.WriteLine(DisplayMenu());
@@ -40,8 +47,11 @@ namespace Console_Imp
                     TestInput = TestMenuInput(InputValue);
                 }
             }
+<<<<<<< HEAD
 
             //Method for displaying current state of the votes to the user
+=======
+>>>>>>> origin/New_Functions
             string DisplayVotes()
             {
                 string Output = "\n";
@@ -52,8 +62,11 @@ namespace Console_Imp
                 }
                 return Output;
             }
+<<<<<<< HEAD
 
             //Method for diaplaying menu to user
+=======
+>>>>>>> origin/New_Functions
             string DisplayMenu()
             {
                 string Output = "\nMenu\n";
@@ -66,8 +79,11 @@ namespace Console_Imp
 
                 return Output;
             }
+<<<<<<< HEAD
 
             //takes the users input from the menu
+=======
+>>>>>>> origin/New_Functions
             bool TestMenuInput(int Input)
             {
                 if(Input == 1)
@@ -89,7 +105,7 @@ namespace Console_Imp
                     return true;
                 }else if(Input == 5)
                 {
-                    //ChangeCountryRule();
+                    ChangeCountryRule();
                     return true;
                 }else if(Input == 6)
                 {
@@ -97,15 +113,17 @@ namespace Console_Imp
                 }
                 return false;
             }
+<<<<<<< HEAD
 
             //method for testing the current sate of the votes
+=======
+>>>>>>> origin/New_Functions
             bool TestCurrentVote()
             {
                 int TotalPop = 0;
                 int ForPop = 0;
                 int AgainstPop = 0;
                 int AbstainPop = 0;
-
                 int TotalVote = 0;
                 int ForVote = 0;
                 int AgainstVote = 0;
@@ -133,8 +151,11 @@ namespace Console_Imp
                         }
                     }
                 }
+<<<<<<< HEAD
 
                 //working out percentages for the votes and the population
+=======
+>>>>>>> origin/New_Functions
                 float VotePercent = (float) ForVote / TotalVote;
                 float PopPercent = (float) ForPop / TotalPop;
 
@@ -155,8 +176,11 @@ namespace Console_Imp
                     return false;
                 }
             }
+<<<<<<< HEAD
 
             //methof to change a single vote in the array
+=======
+>>>>>>> origin/New_Functions
             void ChangeSingleVote()
             {
                 Console.WriteLine("\nNum".PadRight(6) + "Country".PadRight(15) + "Vote");//formating the output
@@ -164,7 +188,6 @@ namespace Console_Imp
                 {
                     Console.WriteLine((i+1).ToString().PadRight(5) + CountryInfo[i].Name.PadRight(15) + CountryInfo[i].GetVoteString().PadRight(7));
                 }
-
                 int Value = 0;
                 //select value
                 while (true)
@@ -181,8 +204,11 @@ namespace Console_Imp
                         Console.WriteLine("Invalid Country (Expecting Int)");
                     }
                 }
+<<<<<<< HEAD
 
                 //change vote
+=======
+>>>>>>> origin/New_Functions
                 while (true)
                 {
                     Console.WriteLine("1: For");
@@ -205,8 +231,11 @@ namespace Console_Imp
                 }
                 
             }
+<<<<<<< HEAD
 
             //change all votes
+=======
+>>>>>>> origin/New_Functions
             void ChangeAllVotes()
             {
                 foreach (Country info in CountryInfo)
@@ -232,10 +261,10 @@ namespace Console_Imp
                             Console.WriteLine("Invalid Vote (Expecting Int)");
                         }
                     }
-
                     Console.WriteLine(info.Name + ":" + info.GetVoteString());
                 }
             }
+<<<<<<< HEAD
         
             void AllCountriesParticipating()
             {
@@ -251,6 +280,43 @@ namespace Console_Imp
             }
         
         
+=======
+            void EurozoneVote() //Eurozone method to change all non-eurozone votes to not paricipating.
+            {
+                CountryInfo[1].ChangeVote(3); //Bulgaria
+                CountryInfo[3].ChangeVote(3); //Croatia
+                CountryInfo[5].ChangeVote(3); //Czech Republic
+                CountryInfo[6].ChangeVote(3); //Denmark
+                CountryInfo[12].ChangeVote(3); //Hungary
+                CountryInfo[20].ChangeVote(3); //Poland
+                CountryInfo[22].ChangeVote(3); //Romania
+                CountryInfo[26].ChangeVote(3); //Sweden
+            }
+            void ChangeCountryRule() //Method for the user to select country rule.
+            {
+                int choice = 0; //Initial choice of user choice.
+                while (true) //While loop to run until a valid input is given.
+                {
+                    Console.WriteLine("\nChoose Eurozone Countries Only [1] OR All Pariticpating Countries [2]:");
+                    choice = Convert.ToInt32(Console.ReadLine()); //Prompt and input collection for user choice.
+                    if (choice == 1)
+                    {
+                        EurozoneVote(); //Run EurozoneVote method.
+                        Console.WriteLine("Now Showing Eurozone Only");
+                        break;
+                    }
+                    else if(choice == 2)
+                    {
+                        //AllCountriesParticipating(); //Run AllCountriesParticipating method.
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid choice (Expecting Int)"); //Error message for invalid input.
+                    }
+                }
+            }
+>>>>>>> origin/New_Functions
         }
     }
 }
