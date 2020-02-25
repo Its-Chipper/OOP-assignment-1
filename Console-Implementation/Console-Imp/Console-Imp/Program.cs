@@ -8,6 +8,7 @@ namespace Console_Imp
         static Functions FunctionsCall = new Functions();
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to the EU Council Voting Calculator");
             //array of the countries
             Country[] CountryInfo = new Country[27];
 
@@ -16,7 +17,6 @@ namespace Console_Imp
             string Text = File.ReadAllText(Path.Substring(0, Path.Length - 23) + "CountriesInfo.txt");
 
             string[] CountriesText = Text.Split('\n');
-
             //putting the infomation from the file into the array
             for(int i = 0; i < CountriesText.Length; i++)
             {
@@ -25,15 +25,12 @@ namespace Console_Imp
                 CountryInfo[i].Name = infoarray[0];
                 CountryInfo[i].Population = Convert.ToInt32(infoarray[1]);
             }
-
             //loop for the main menu
             //EurozoneVote(); //Test Eurozone method.
             while (true)
             {
                 Console.WriteLine(DisplayMenu());
-
                 bool TestInput = false;
-
                 while (!TestInput)
                 {
                     Console.Write("Input:");
@@ -48,7 +45,6 @@ namespace Console_Imp
                     
                 }
             }
-
             //Method for displaying current state of the votes to the user
             string DisplayVotes()
             {
@@ -60,7 +56,6 @@ namespace Console_Imp
                 }
                 return Output;
             }
-
             //Method for diaplaying menu to user
             string DisplayMenu()
             {
@@ -74,7 +69,6 @@ namespace Console_Imp
 
                 return Output;
             }
-
             //takes the users input from the menu
             bool TestMenuInput(int Input)
             {
@@ -106,7 +100,6 @@ namespace Console_Imp
                 Console.WriteLine("Error: Number between 1 and 6 expected");
                 return false;
             }
-
             //method for testing the current sate of the votes
             bool TestCurrentVote()
             {
@@ -141,7 +134,6 @@ namespace Console_Imp
                         }
                     }
                 }
-
                 //working out percentages for the votes and the population
                 float VotePercent = (float) ForVote / TotalVote;
                 float PopPercent = (float) ForPop / TotalPop;
@@ -150,7 +142,6 @@ namespace Console_Imp
                 Console.WriteLine("Rule:".PadRight(12) + FunctionsCall.OutputRule());
                 Console.WriteLine("Vote:".PadRight(12) + "For:" + ForVote.ToString().PadRight(12) + " Against:" + AgainstVote.ToString().PadRight(12) + " Abstain:" + AbstainVote.ToString().PadRight(12) + " Percent:" + Math.Round(VotePercent * 100, 2));
                 Console.WriteLine("Population:".PadRight(12) + "For:" + String.Format("{0:n0}", ForPop).PadRight(12) + " Against:" + String.Format("{0:n0}", AgainstPop).PadRight(12) + " Abstain:" + String.Format("{0:n0}", AbstainPop).PadRight(12) + " Percent:" + Math.Round(PopPercent * 100, 2));
-
 
                 //test if the vote passed or was rejected
                 if (FunctionsCall.TestMajority(VotePercent, PopPercent))
@@ -164,8 +155,6 @@ namespace Console_Imp
                     return false;
                 }
             }
-
-
             void ChangeVoteRule(){
                 int Value;
                 while (true)
@@ -194,7 +183,6 @@ namespace Console_Imp
                 }
                 FunctionsCall.ChangeRule(Value - 1);
             }
-
             //method to change a single vote in the array
             void ChangeSingleVote()
             {
@@ -208,11 +196,11 @@ namespace Console_Imp
                 while (true)
                 {
                     //taking users input
-                    Console.Write("\nChoose Contry:");
+                    Console.Write("\nChoose Country:");
                     string UserInput = Console.ReadLine();
                     if (int.TryParse(UserInput, out Value))
                     {
-                        if (Value < 27 && Value > 0)
+                        if (Value < 28 && Value > 0)
                         {
                             break;
                         }
@@ -226,7 +214,6 @@ namespace Console_Imp
                         Console.WriteLine("Error: Expected integer input");
                     }
                 }
-
                 //change vote
                 while (true)
                 {
@@ -250,7 +237,6 @@ namespace Console_Imp
                 }
                 
             }
-
             //change all votes
             void ChangeAllVotes()
             {
@@ -284,11 +270,9 @@ namespace Console_Imp
                     }
                     Console.WriteLine(info.Name + ":" + info.GetVoteString());
                 }
-            }
-        
+            }        
             void AllCountriesParticipating()
-            {
-          
+            {          
                 foreach (Country info in CountryInfo) //loops through each country as info 
                 {
                     //If the country vote is set to NoVote(3). It will be set to Against(1) 
@@ -298,8 +282,6 @@ namespace Console_Imp
                     }
                 }
             }
-        
-       
             void EurozoneVote() //Eurozone method to change all non-eurozone votes to not paricipating.
             {
                 CountryInfo[1].ChangeVote(3); //Bulgaria

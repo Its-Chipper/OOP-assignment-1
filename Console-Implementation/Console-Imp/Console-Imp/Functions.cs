@@ -8,7 +8,6 @@ namespace Console_Imp
     class Functions
     {
         private int CurrentRule = 1;
-
         private bool Majority(float percentOfVote, float percentOfPop, float percentNeed, float popNeeded) //Framework method for different types of majority vote.
         {
             if ((percentOfVote > percentNeed) && (percentOfPop > popNeeded)) //Validation for votes and population to be more than required of each majority type.
@@ -67,7 +66,6 @@ namespace Console_Imp
                 return false;
             }
         }
-
         public bool ChangeRule(int Value)
         {
             if (Value <= 3 && Value >=0)
@@ -80,7 +78,6 @@ namespace Console_Imp
                 return false;
             }
         }
-
         public string OutputRule()
         {
             if(CurrentRule == 0)
