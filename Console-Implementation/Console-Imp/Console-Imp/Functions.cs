@@ -7,12 +7,7 @@ namespace Console_Imp
     //This class will hold all of the functions that are needed for the code.
     class Functions
     {
-<<<<<<< HEAD
         private int CurrentRule = 1;
-        Program P = new Program();
-=======
-        private int CurrentRule = 1; //Default vote of 'yes'.
->>>>>>> origin/New_Functions
 
         private bool Majority(float percentOfVote, float percentOfPop, float percentNeed, float popNeeded) //Framework method for different types of majority vote.
         {
@@ -70,6 +65,38 @@ namespace Console_Imp
             else
             {
                 return false;
+            }
+        }
+
+        public bool ChangeRule(int Value)
+        {
+            if (Value <= 3 && Value >=0)
+            {
+                CurrentRule = Value;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public string OutputRule()
+        {
+            if(CurrentRule == 0)
+            {
+                return "Simple Majority";
+            }else if(CurrentRule == 1)
+            {
+                return "Reinforced Majority";
+            }
+            else if(CurrentRule == 2)
+            {
+                return "Qualified Majority";
+            }
+            else
+            {
+                return "Unanimity";
             }
         }
     }

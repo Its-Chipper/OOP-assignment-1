@@ -36,9 +36,16 @@ namespace Console_Imp
 
                 while (!TestInput)
                 {
-                    Console.WriteLine("Input:");
-                    int InputValue = Convert.ToInt32(Console.ReadLine());
-                    TestInput = TestMenuInput(InputValue);
+                    Console.Write("Input:");
+                    string Input = Console.ReadLine();
+                    if(int.TryParse(Input,out int InputValue)){
+                        TestInput = TestMenuInput(InputValue);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Integer Value expected");
+                    }
+                    
                 }
             }
 
@@ -86,7 +93,7 @@ namespace Console_Imp
                     return true;
                 }else if(Input == 4)
                 {
-                    //ChangeVoteRule();
+                    ChangeVoteRule();
                     return true;
                 }else if(Input == 5)
                 {
@@ -96,6 +103,7 @@ namespace Console_Imp
                 {
                     Environment.Exit(0);
                 }
+                Console.WriteLine("Error: Number between 1 and 6 expected");
                 return false;
             }
 
@@ -139,12 +147,13 @@ namespace Console_Imp
                 float PopPercent = (float) ForPop / TotalPop;
 
                 //output to the user
-                Console.WriteLine("Vote:  For:" + ForVote + " Against:" + AgainstVote + " Abstain:" + AbstainVote + " Percent:" + Math.Round(VotePercent * 100, 2));
-                Console.WriteLine("Population:  For:" + String.Format("{0:n0}", ForPop) + " Against:" + String.Format("{0:n0}", AgainstPop) + " Abstain:" + String.Format("{0:n0}", AbstainPop) + " Percent:" + Math.Round(PopPercent * 100, 2));
+                Console.WriteLine("Rule:".PadRight(12) + FunctionsCall.OutputRule());
+                Console.WriteLine("Vote:".PadRight(12) + "For:" + ForVote.ToString().PadRight(12) + " Against:" + AgainstVote.ToString().PadRight(12) + " Abstain:" + AbstainVote.ToString().PadRight(12) + " Percent:" + Math.Round(VotePercent * 100, 2));
+                Console.WriteLine("Population:".PadRight(12) + "For:" + String.Format("{0:n0}", ForPop).PadRight(12) + " Against:" + String.Format("{0:n0}", AgainstPop).PadRight(12) + " Abstain:" + String.Format("{0:n0}", AbstainPop).PadRight(12) + " Percent:" + Math.Round(PopPercent * 100, 2));
 
 
                 //test if the vote passed or was rejected
-                if (FunctionsCall.QualifiedMajority(VotePercent, PopPercent))
+                if (FunctionsCall.TestMajority(VotePercent, PopPercent))
                 {
                     Console.WriteLine("Approved");
                     return true;
@@ -156,6 +165,36 @@ namespace Console_Imp
                 }
             }
 
+
+            void ChangeVoteRule(){
+                int Value;
+                while (true)
+                {
+                    Console.WriteLine("\n1: Simple Majority");
+                    Console.WriteLine("2: Reinforced Majority");
+                    Console.WriteLine("3: Qualified Majority");
+                    Console.WriteLine("4: Unanimity");
+                    Console.Write("Input:");
+                    string UserInput = Console.ReadLine();
+                    if (int.TryParse(UserInput, out Value))
+                    {
+                        if(Value > 0 && Value < 5)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Expecting integer input between 1 and 4");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Expecting integer input between 1 and 4");
+                    }
+                }
+                FunctionsCall.ChangeRule(Value - 1);
+            }
+
             //method to change a single vote in the array
             void ChangeSingleVote()
             {
@@ -164,20 +203,27 @@ namespace Console_Imp
                 {
                     Console.WriteLine((i+1).ToString().PadRight(5) + CountryInfo[i].Name.PadRight(15) + CountryInfo[i].GetVoteString().PadRight(7));
                 }
-                int Value = 0;
+                int Value;
                 //select value
                 while (true)
                 {
                     //taking users input
-                    Console.WriteLine("\nChoose Contry:");
-                    Value = Convert.ToInt32(Console.ReadLine());
-                    if(Value < 27)
+                    Console.Write("\nChoose Contry:");
+                    string UserInput = Console.ReadLine();
+                    if (int.TryParse(UserInput, out Value))
                     {
-                        break;
+                        if (Value < 27 && Value > 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: Invalid Country");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Invalid Country (Expecting Int)");
+                        Console.WriteLine("Error: Expected integer input");
                     }
                 }
 
@@ -189,7 +235,7 @@ namespace Console_Imp
                     Console.WriteLine("3: Abstain");
                     Console.WriteLine("4: No Vote");
                     
-                    Console.WriteLine("Vote");
+                    Console.Write("Vote Input:");
                     int Vote = Convert.ToInt32(Console.ReadLine());
 
                     if (CountryInfo[Value-1].ChangeVote(Vote - 1) == true)
@@ -210,25 +256,30 @@ namespace Console_Imp
             {
                 foreach (Country info in CountryInfo)
                 {
-                    Console.WriteLine(info.Name);
+                    Console.WriteLine(info.Name);//outputs conutry and voting options
+                    Console.WriteLine("1: For");
+                    Console.WriteLine("2: Against");
+                    Console.WriteLine("3: Abstain");
+                    Console.WriteLine("4: No Vote");
                     while (true)
                     {
-                        Console.WriteLine("1: For");
-                        Console.WriteLine("2: Against");
-                        Console.WriteLine("3: Abstain");
-                        Console.WriteLine("4: No Vote");
-
-                        Console.WriteLine("Vote");
-                        int Vote = Convert.ToInt32(Console.ReadLine());
-
-                        if (info.ChangeVote(Vote - 1))
+                        Console.Write("\nVote Input:");
+                        string UserInput = Console.ReadLine();
+                        if (int.TryParse(UserInput, out int Vote))//checks if is an int
                         {
-                            Console.WriteLine("Vote Changed");
-                            break;
+                            if (info.ChangeVote(Vote - 1))
+                            {
+                                Console.WriteLine("Vote Changed");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error: Invalid Vote");
+                            }
                         }
                         else
                         {
-                            Console.WriteLine("Invalid Vote (Expecting Int)");
+                            Console.WriteLine("Error: Integer value expexted");
                         }
                     }
                     Console.WriteLine(info.Name + ":" + info.GetVoteString());
@@ -265,22 +316,30 @@ namespace Console_Imp
                 int choice = 0; //Initial choice of user choice.
                 while (true) //While loop to run until a valid input is given.
                 {
-                    Console.WriteLine("\nChoose Eurozone Countries Only [1] OR All Pariticpating Countries [2]:");
-                    choice = Convert.ToInt32(Console.ReadLine()); //Prompt and input collection for user choice.
-                    if (choice == 1)
+                    Console.WriteLine("\n1: Choose Eurozone Countries Only \n2: All Pariticpating Countries");
+                    Console.Write("Input:");
+                    string UserInput = Console.ReadLine(); //Prompt and input collection for user choice.
+                    if (int.TryParse(UserInput, out choice))
                     {
-                        EurozoneVote(); //Run EurozoneVote method.
-                        Console.WriteLine("Now Showing Eurozone Only");
-                        break;
-                    }
-                    else if(choice == 2)
-                    {
-                        //AllCountriesParticipating(); //Run AllCountriesParticipating method.
-                        break;
+                        if (choice == 1)
+                        {
+                            EurozoneVote();
+                            Console.WriteLine("Now Showing Eurozone Only");
+                            break;
+                        }
+                        else if (choice == 2)
+                        {
+                            AllCountriesParticipating();
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: Invalid choice "); //Error message for invalid input.
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Invalid choice (Expecting Int)"); //Error message for invalid input.
+                        Console.WriteLine("Error: Expecting integer input");
                     }
                 }
             }
